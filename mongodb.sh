@@ -30,6 +30,6 @@ else
     echo "Your are root user"
 fi # fi indicates, end of if condition
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo $>> $LOGFILE
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copy MongoDP Repo"
 
