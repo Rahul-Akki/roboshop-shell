@@ -55,8 +55,14 @@ VALIDATE $? "Creating app directory"
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Downloading Catalogue application"
 
+cd /app
+VALIDATE $? "Opening app directory"
+
 unzip -o /tmp/catalogue.zip &>> $LOGFILE # -o --> overwrites the existing file
 VALIDATE $? "Unziping Catalogue application"
+
+cd /app
+VALIDATE $? "Opening app directory"
 
 npm install &>> $LOGFILE
 VALIDATE $? "Installing dependencies"
