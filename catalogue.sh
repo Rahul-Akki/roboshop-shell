@@ -10,6 +10,7 @@ LOGFILE="/tmp/$0-$TIMESTAMP.log"
 MONGODB_HOST=mongodb.mydevops.online
 
 echo "scrip started executing at $TIMESTAMP" &>> $LOGFILE
+echo "scrip started executing at $TIMESTAMP"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -85,7 +86,7 @@ VALIDATE $? "Copying Mongo Repo file"
 dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "Installing MongoDB client"
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js
+mongo --host $MONGODB_HOST </app/schema/catalogue.js $LOGFILESS
 VALIDATE $? "Loding Catlogue data into MongoDB"
 
 
