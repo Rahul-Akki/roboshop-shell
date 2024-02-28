@@ -15,6 +15,7 @@ VALIDATE(){
     if [ $1 -ne 0 ]
     then 
         echo -e "$2...$R FAILED $N"
+        exit 1
     else
         echo -e "$2...$G SUCCESS $N"
     fi
@@ -39,16 +40,22 @@ VALIDATE $? "Enabling nodeJS:18"
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Enabling nodeJS:18"
 
-useradd roboshop 
-VALIDATE $? "Creating the Roboshop User"
+id roboshop 
+if [ $? -ne 0 ] #if roboshop user already exists, skip and go to next step.
+    then 
+        useradd roboshop 
+        VALIDATE $? "Creating the Roboshop User"
+    else
+        echo -e "roboshop user already exist $Y SKIPPING $N"
+    fi
 
-mkdir /app
+mkdir -p /app #mkdir -p <file-name> --> if file-name already exists, it will not execute anything.
 VALIDATE $? "Creating app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Downloading Catalogue application"
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE # -o --> overwrites the existing file
 VALIDATE $? "Unziping Catalogue application"
 
 npm install &>> $LOGFILE
