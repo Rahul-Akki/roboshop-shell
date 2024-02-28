@@ -33,11 +33,11 @@ fi # fi indicates, end of if condition
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "Copied MongoDB Repo"
 
-dnf install mongodb-org -y 
-VALIDATE $? "Installing MongoDB" &>> $LOGFILE
+dnf install mongodb-org -y &>> $LOGFILE
+VALIDATE $? "Installing MongoDB" 
 
-systemctl enable mongod
-VALIDATE $? "Enabling MongoDB" &>> $LOGFILE
+systemctl enable mongod &>> $LOGFILE
+VALIDATE $? "Enabling MongoDB" 
 
 systemctl start mongod &>> $LOGFILE
 VALIDATE $? "Starting MongoDB"
