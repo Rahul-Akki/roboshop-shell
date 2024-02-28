@@ -38,9 +38,9 @@ dnf module enable nodejs:18 -y &>> $LOGFILE
 VALIDATE $? "Enabling nodeJS:18"
 
 dnf install nodejs -y &>> $LOGFILE
-VALIDATE $? "Enabling nodeJS:18"
+VALIDATE $? "Starting nodeJS:18"
 
-id roboshop 
+id roboshop &>> $LOGFILE
 if [ $? -ne 0 ] #if roboshop user already exists, skip and go to next step.
     then 
         useradd roboshop 
