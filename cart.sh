@@ -34,7 +34,7 @@ fi # fi indicates, end of if condition
 
 dnf module disable nodejs -y &>> $LOGFILE
 VALIDATE $? "Disabeling nodeJS" 
-S
+
 dnf module enable nodejs:18 -y &>> $LOGFILE
 VALIDATE $? "Enabling nodeJS:18"
 
