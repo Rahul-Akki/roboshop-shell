@@ -1,9 +1,9 @@
 #!/bin/bash
 
-AMI=ami-0f3c7d07486cad139
+AMI=ami-0f3c7d07486cad139 #Replace Zone ID
 SG_ID=sg-06b9f4678b7c43359
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispach" "web")
-ZONE_ID=Z067191133W0RZ98BMQ5V
+ZONE_ID=Z067191133W0RZ98BMQ5V #Replace Zone ID
 DOMAIN_NAME="mydevops.online"
 
 for i in "${INSTANCES[@]}"
