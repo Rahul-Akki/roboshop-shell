@@ -7,10 +7,10 @@ N="/e[0m"
 
 ID=$( id -u )
 
-if [ ID -ne 0 ]
+if [ $ID -ne 0 ]
 then    
-    echo "$G You are the root User... $N"
+    echo -e "$G You are the root User... $N"
 else
-    echo "$R You are not the root User, This Package Need root access for installation"
+    echo -e "$R You are not the root User, This Package Need root access for installation"
     exit1
 fi
