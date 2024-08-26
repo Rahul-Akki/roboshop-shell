@@ -8,10 +8,10 @@ N="\e[0m"
 VALIDATE() {
     if [$1 -ne 0]
     then
-        echo "$2 $R Failed..! $N "
+        echo -e "$2 $R Failed..! $N "
         exit 1
     else 
-        echo "$2 $G succeeded.. $N "
+        echo -e "$2 $G succeeded.. $N "
     fi
 }
 
@@ -25,5 +25,5 @@ else
     echo -e "$G You are the root User... $N"
 fi
 
-cp etc/yum.repos.d/mongo.repo
+cp mongo.repo etc/yum.repos.d/mongo.repo
 VALIDATE $? "MongoDB repo file setup is"
