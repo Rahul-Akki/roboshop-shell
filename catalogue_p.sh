@@ -46,7 +46,7 @@ if [ $? -ne 0 ] #if roboshop user already exists, skip and go to next step.
         echo -e "roboshop user already exist $Y SKIPPING $N"
     fi
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE
 VALIDATE $? "App Directory creation is"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
@@ -55,7 +55,7 @@ VALIDATE $? "Downloading the application code is"
 cd /app &>> $LOGFILE
 VALIDATE $? "Open app directory is"
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 VALIDATE $? "Unzipping the application code in app directory is"
 
 cd /app &>> $LOGFILE
