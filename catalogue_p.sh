@@ -61,6 +61,9 @@ VALIDATE $? "Dependencies installation is"
 cp /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "Setup SystemD Catalogue Service is"
 
+sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.mydevops.online/g' /etc/mongod.conf  &>> $LOGFILE
+VALIDATE $? "MongoDB DNS Configuration is"
+
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "Daemon-reload is"
 
