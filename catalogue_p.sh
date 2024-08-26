@@ -79,7 +79,7 @@ VALIDATE $? "Enabling Catlogue is"
 systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "Starting Catlogue is"
 
-cp /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "MongoDB repo setup is"
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
