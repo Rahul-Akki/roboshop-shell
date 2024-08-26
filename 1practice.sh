@@ -12,6 +12,7 @@ VALIDATE() {
         exit 1
     else 
         echo "$2 $G succeeded.. $N "
+    fi
 }
 
 ID=$( id -u )
