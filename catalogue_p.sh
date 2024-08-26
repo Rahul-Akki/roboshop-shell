@@ -67,7 +67,7 @@ VALIDATE $? "Dependencies installation is"
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "Setup SystemD Catalogue Service is"
 
-sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.mydevops.online/g' /etc/mongod.conf  &>> $LOGFILE
+sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.mydevops.online/g' /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "MongoDB DNS Configuration is"
 
 systemctl daemon-reload &>> $LOGFILE
