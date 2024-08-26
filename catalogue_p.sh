@@ -36,3 +36,46 @@ VALIDATE $? "Enabling of nodejs:18 module is"
 
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Installation of nodejs is"
+
+useradd roboshop &>> $LOGFILE
+VALIDATE $? "Adding a User is"
+
+mkdir /app &>> $LOGFILE
+VALIDATE $? "App Directory creation is"
+
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+VALIDATE $? "Downloading the application code is"
+
+cd /app &>> $LOGFILE
+VALIDATE $? "Open app directory is"
+
+unzip /tmp/catalogue.zip &>> $LOGFILE
+VALIDATE $? "Unzipping the application code in app directory is"
+
+cd /app &>> $LOGFILE
+VALIDATE $? "Open app directory is"
+
+npm install &>> $LOGFILE
+VALIDATE $? "Dependencies installation is"
+
+cp /etc/systemd/system/catalogue.service &>> $LOGFILE
+VALIDATE $? "Setup SystemD Catalogue Service is"
+
+systemctl daemon-reload &>> $LOGFILE
+VALIDATE $? "Daemon-reload is"
+
+systemctl enable catalogue &>> $LOGFILE
+VALIDATE $? "Enabling Catlogue is"
+
+systemctl start catalogue &>> $LOGFILE
+VALIDATE $? "Starting Catlogue is"
+
+cp /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+VALIDATE $? "MongoDB repo setup is"
+
+dnf install mongodb-org-shell -y &>> $LOGFILE
+VALIDATE $? "MongoDB client Installation is"
+
+mongo --host mongodb.mydevops.online </app/schema/catalogue.js &>> $LOGFILE
+VALIDATE $? "Load Schema"
+
