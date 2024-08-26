@@ -37,7 +37,7 @@ VALIDATE $? "Enabling of nodejs:18 module is"
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Installation of nodejs is"
 
-useradd roboshop &>> $LOGFILE
+id roboshop &>> $LOGFILE
 if [ $? -ne 0 ] #if roboshop user already exists, skip and go to next step.
     then 
         useradd roboshop 
