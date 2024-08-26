@@ -64,7 +64,7 @@ VALIDATE $? "Open app directory is"
 npm install &>> $LOGFILE
 VALIDATE $? "Dependencies installation is"
 
-cp /etc/systemd/system/catalogue.service &>> $LOGFILE
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
 VALIDATE $? "Setup SystemD Catalogue Service is"
 
 sed -i 's/<MONGODB-SERVER-IPADDRESS>/mongodb.mydevops.online/g' /etc/mongod.conf  &>> $LOGFILE
