@@ -25,5 +25,5 @@ else
     echo -e "$G You are the root User... $N"
 fi
 
-cp mongo.repo etc/yum.repos.d/mongo.repo
+cp /etc/yum.repos.d/mongo.repo
 VALIDATE $? "MongoDB repo file setup is"
