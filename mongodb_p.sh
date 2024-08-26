@@ -22,8 +22,8 @@ ID=$( id -u )
 
 if [ $ID -ne 0 ]
 then
-    echo -e "$R You are not the root User, This Package Need root access for installation $N"
-    exit1    
+    echo -e "$R ERROR: You are not the root User, This Package Need root access for installation $N"
+    exit 1    
 else
     echo -e "$G You are the root User... $N"
 fi
