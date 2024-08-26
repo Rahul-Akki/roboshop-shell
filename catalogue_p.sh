@@ -28,11 +28,11 @@ else
     echo -e "$G You are the root User... $N"
 fi
 
-dnf module disable nodejs -y
-VALIDATE $1 "Disabeling of current nodejs module is"
+dnf module disable nodejs -y &>> $LOGFILE
+VALIDATE $? "Disabeling of current nodejs module is"
 
-dnf module enable nodejs:18 -y
-VALIDATE $1 "Enabling of nodejs:18 module is"
+dnf module enable nodejs:18 -y &>> $LOGFILE
+VALIDATE $? "Enabling of nodejs:18 module is"
 
-dnf install nodejs -y
-VALIDATE $1 "Installation of nodejs is"
+dnf install nodejs -y &>> $LOGFILE
+VALIDATE $? "Installation of nodejs is"
