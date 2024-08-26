@@ -25,5 +25,15 @@ else
     echo -e "$G You are the root User... $N"
 fi
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo #Setup the MongoDB repo file
 VALIDATE $? "MongoDB repo file setup is"
+
+dnf install mongodb-org -y #Install MongoDB
+VALIDATE $? "Installation of MongoDB is"
+
+systemctl enable mongod 
+VALIDATE $? "Enableing of MongoDB Service" 
+
+systemctl start mongod 
+VALIDATE $? "Starting of MongoDB Service" 
+
